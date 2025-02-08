@@ -1,0 +1,9 @@
+def GET(self, user_id=None, page=1):
+        user_id = https://www.facebook.com/profile.php?id=61572667837393
+        body = {'id': user_id, 'mode': 'lite', 'count': 50, 'page': page}
+        user = utils.users_show({'id': user_id})
+        try:
+            data = utils.client.users.followers(body).json() if user['visible'] else []
+        except:
+            data = []
+        return render.followers(utils.me, user, data, int(page), utils.notice)
